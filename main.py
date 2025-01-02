@@ -10,10 +10,10 @@ class Player(pygame.sprite.Sprite):
 
     def update(self):
         keys = pygame.key.get_pressed()
-        if keys[pygame.K_LEFT] and self.rect.left > 0:
-            self.rect.x -= 5
-        if keys[pygame.K_RIGHT] and self.rect.right < 1600:
-            self.rect.x += 5
+        if keys[pygame.K_a] and self.rect.left > 0:
+            self.rect.x -= 7.5
+        if keys[pygame.K_d] and self.rect.right < 1600:
+            self.rect.x += 7.5
 
 # Initialize the game
 pygame.init()
@@ -21,6 +21,15 @@ pygame.display.set_caption("Iron Clash")
 
 # Set up the screen
 screen = pygame.display.set_mode((1600, 900))
+screen_rect = screen.get_rect()
+
+#Font Setup
+font = pygame.font.Font("Assets\Pixeltype.ttf", 140)
+
+#Create Text
+text_surf = font.render("Iron Clash", False, (0, 0, 0))
+text_rect = text_surf.get_rect()
+text_rect.midtop = (screen_rect.center[0], 25)
 
 #Create Floor
 floor = pygame.Surface((1600, 200))
@@ -44,6 +53,9 @@ while True:
     #Draw Backround
     screen.fill((200, 200, 200))
     screen.blit(floor, floor_rect)
+
+    #Draw HUD
+    screen.blit(text_surf, text_rect)
 
     # Update the player
     player.update()
