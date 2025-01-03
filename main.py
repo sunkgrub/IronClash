@@ -7,13 +7,28 @@ class Player(pygame.sprite.Sprite):
         self.image.fill((255, 0, 0))
         self.rect = self.image.get_rect()
         self.rect.midbottom = (200, floor_rect.top)
+        self.gravity = 0
+    
+    def apply_gravity(self):
+        if self.rect.bottom < floor_rect.top:
+            self.gravity += 5
+            self.rect.y += self.gravity
+        if self.rect.bottom >= floor_rect.top:
+            self.gravity = 0
+            self.rect.bottom = floor_rect.top
+
 
     def update(self):
         keys = pygame.key.get_pressed()
-        if keys[pygame.K_a] and self.rect.left > 0:
+        if keys[pygame.K_a] and not keys[pygame.K_d] and  self.rect.left > 0:
             self.rect.x -= 7.5
-        if keys[pygame.K_d] and self.rect.right < 1600:
+        if keys[pygame.K_d] and self.rect.right < 1600 and not keys[pygame.K_a]:
             self.rect.x += 7.5
+        if keys[pygame.K_SPACE] and self.rect.bottom == floor_rect.top:
+            self.rect.y -= 100
+        self.apply_gravity()
+
+
 
 # Initialize the game
 pygame.init()
