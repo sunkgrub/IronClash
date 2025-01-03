@@ -28,7 +28,17 @@ class Player(pygame.sprite.Sprite):
             self.rect.y -= 250
         self.apply_gravity()
 
-
+class HealthBar(pygame.sprite.Sprite):
+    def __init__(self):
+        super(HealthBar, self).__init__()
+        self.image = pygame.Surface((500, 50))
+        self.health = 500
+        self.image.fill((0, 255, 0))
+        self.rect = self.image.get_rect()
+        self.rect.topleft = (50, 25)
+    
+    def update(self):
+        pass
 
 # Initialize the game
 pygame.init()
@@ -52,6 +62,9 @@ floor.fill((150, 150, 150))
 floor_rect = floor.get_rect()
 floor_rect.topleft = (0, 700)
 
+#Create Health Bar
+health_bar = pygame.sprite.GroupSingle(HealthBar())
+
 # Set up the clock
 clock = pygame.time.Clock()
 
@@ -69,12 +82,18 @@ while True:
     screen.fill((200, 200, 200))
     screen.blit(floor, floor_rect)
 
+
+
     #Draw HUD
     screen.blit(text_surf, text_rect)
 
     # Update the player
     player.update()
     player.draw(screen)
+
+    # Update the health bar
+    health_bar.update()
+    health_bar.draw(screen)
 
     # Update the screen
     pygame.display.update()
