@@ -26,10 +26,10 @@ class FistGuy(pygame.sprite.Sprite):
         keys = pygame.key.get_pressed()
         if keys[controls["left"][self.portNum]] and not keys[controls["right"][self.portNum]] and  self.rect.left > 0:
             self.image = self.images[0]
-            self.rect.x -= 7.5
+            self.rect.x -= 8.5
         if keys[controls["right"][self.portNum]] and self.rect.right < 1600 and not keys[controls["left"][self.portNum]]:
             self.image = self.images[1]
-            self.rect.x += 7.5
+            self.rect.x += 8.5
         if keys[controls["jump"][self.portNum]] and self.rect.bottom == floor_rect.top:
             self.rect.y -= 250
         self.apply_gravity()
@@ -59,10 +59,10 @@ class FootGuy(pygame.sprite.Sprite):
         keys = pygame.key.get_pressed()
         if keys[controls["left"][self.portNum]] and not keys[controls["right"][self.portNum]] and  self.rect.left > 0:
             self.image = self.images[0]
-            self.rect.x -= 7.5
+            self.rect.x -= 10
         if keys[controls["right"][self.portNum]] and self.rect.right < 1600 and not keys[controls["left"][self.portNum]]:
             self.image = self.images[1]
-            self.rect.x += 7.5
+            self.rect.x += 10
         if keys[controls["jump"][self.portNum]] and self.rect.bottom == floor_rect.top:
             self.rect.y -= 250
         self.apply_gravity()
@@ -125,7 +125,8 @@ clock = pygame.time.Clock()
 controls = {
     "left": [pygame.K_a,pygame.K_j],
     "right": [pygame.K_d, pygame.K_l],
-    "jump": [pygame.K_w, pygame.K_i]
+    "jump": [pygame.K_w, pygame.K_i],
+    "block": [pygame.K_q, pygame.K_o]
 }
 
 # Create the FistGuy
