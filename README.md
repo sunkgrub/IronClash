@@ -13,7 +13,7 @@
 - Shades
 - Navy Blue
 
-### Sword Gril
+### Sword Girl
 - Sword (Grey ig)
 - Color Light Blue
   
