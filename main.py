@@ -11,7 +11,7 @@ class Player(pygame.sprite.Sprite):
     
     def apply_gravity(self):
         if self.rect.bottom < floor_rect.top:
-            self.gravity += 5
+            self.gravity += 1
             self.rect.y += self.gravity
         if self.rect.bottom >= floor_rect.top:
             self.gravity = 0
@@ -25,7 +25,7 @@ class Player(pygame.sprite.Sprite):
         if keys[pygame.K_d] and self.rect.right < 1600 and not keys[pygame.K_a]:
             self.rect.x += 7.5
         if keys[pygame.K_SPACE] and self.rect.bottom == floor_rect.top:
-            self.rect.y -= 100
+            self.rect.y -= 250
         self.apply_gravity()
 
 
@@ -39,7 +39,7 @@ screen = pygame.display.set_mode((1600, 900))
 screen_rect = screen.get_rect()
 
 #Font Setup
-font = pygame.font.Font("Assets\Pixeltype.ttf", 140)
+font = pygame.font.Font("Assets\Fonts\Pixeltype.ttf", 140)
 
 #Create Text
 text_surf = font.render("Iron Clash", False, (0, 0, 0))
