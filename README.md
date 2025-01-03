@@ -32,3 +32,4 @@
 
 ### Gun Guy
 ![Gun Guy](Assets/Characters/GunGuy/GunGuy.png)
+![alt text](Assets/Characters/GunGuy/GunGuy.png)
