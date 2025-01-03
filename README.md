@@ -2,7 +2,7 @@
 
 ## Character Ideas
 
-### Hand Guy
+### Fist Guy
 - Gloves
 - Reddish Brown
 
