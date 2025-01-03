@@ -3,7 +3,7 @@ import pygame
 class FistGuy(pygame.sprite.Sprite):
     def __init__(self, startX, portNum):
         super(FistGuy,  self).__init__()
-        self.image_left = pygame.image.load("Assets/Characters/Fist_guy/fistGuy.png")
+        self.image_left = pygame.image.load("Assets/Characters/FistGuy/FistGuy.png")
         self.image_right = pygame.transform.flip(self.image_left, True, False)
         self.images = [self.image_left, self.image_right]
         self.image = self.images[1]
@@ -37,7 +37,7 @@ class FistGuy(pygame.sprite.Sprite):
 class FootGuy(pygame.sprite.Sprite):
     def __init__(self, startX, portNum):
         super(FootGuy,  self).__init__()
-        self.image_left = pygame.image.load("Assets/Characters/Foot_guy/FootGuy.png")
+        self.image_left = pygame.image.load("Assets/Characters/FootGuy/FootGuy.png")
         self.image_right = pygame.transform.flip(self.image_left, True, False)
         self.images = [self.image_left, self.image_right]
         self.image = self.images[1]

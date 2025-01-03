@@ -14,7 +14,7 @@
 - Shades
 - Navy Blue
 
-### Sword Guy
+### Sword Gril
 - Sword (Grey ig)
 - Color Light Blue
   
@@ -30,4 +30,6 @@
 
 ### Water Girl
 - Controls Fire
+
+### Gun Guy
 
