@@ -1,13 +1,20 @@
-# IronClash
+ IronClash
 
 ## Character Ideas
 
 ### Hand Guy
+- Gloves
+- Reddish Brown
 
 ### Foot Guy
+- Shoes
+- Shades
+- Navy Blue
 
 ### Sword Guy
-
+- Sword (Grey ig)
+- Color Light Blue
+  
 ### Robot Guy
 - He has missiles
 
