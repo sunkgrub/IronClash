@@ -31,4 +31,4 @@
 - Controls Fire
 
 ### Gun Guy
-![Gun Guy](Assets/Characters/GunGuy/GunGuy.png)
+![Gun Guy](Assets/Characters/GunGuy/gunGuy.png)
