@@ -17,6 +17,10 @@
   
 ### Robot Guy
 - He has missiles
+- Maybe like cyborg
+- Red robot eye
+
+### Gun Guy
 
 ### Fire Guy
 - Controls water
