@@ -3,16 +3,12 @@
 ## Character Ideas
 
 ### Fist Guy
-
 ![Fist Guy](Assets/Characters/FistGuy/FistGuy.png)
-
 - Gloves
 - Reddish Brown
 
 ### Foot Guy
-
 ![Foot Guy](Assets/Characters/FootGuy/FootGuy.png)
-
 - Shoes
 - Shades
 - Navy Blue
@@ -35,5 +31,4 @@
 - Controls Fire
 
 ### Gun Guy
-![Gun Guy]("Assets/Characters/GunGuy/GunGuy.png")
-
+![Gun Guy](Assets/Characters/GunGuy/GunGuy.png)
