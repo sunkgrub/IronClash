@@ -3,7 +3,7 @@
 ## Character Ideas
 
 ### Fist Guy
-![Fist Guy](Assets/Characters/FistGuy/handGuy2)
+![Fist Guy](Assets/Characters/FistGuy/handGuy2.png)
 - Gloves
 - Reddish Brown
 
