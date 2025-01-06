@@ -15,7 +15,7 @@
 
 ### Sword Girl
 - Sword (Grey ig)
-- Color Light Blue
+- Color Light Blues
   
 ### Robot Guy
 - He has missiles
