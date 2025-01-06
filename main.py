@@ -1,43 +1,9 @@
 import pygame
 
-class FistGuy(pygame.sprite.Sprite):
-    def __init__(self, startX, portNum):
-        super(FistGuy,  self).__init__()
-        self.image_left = pygame.image.load("Assets/Characters/FistGuy/FistGuy.png")
-        self.image_right = pygame.transform.flip(self.image_left, True, False)
-        self.images = [self.image_left, self.image_right]
-        self.image = self.images[1]
-        self.rect = self.image.get_rect()
-        self.rect.midbottom = (startX, floor_rect.top)
-        self.gravity = 0
-        self.health = 500
-        self.portNum = portNum
-    
-    def apply_gravity(self):
-        if self.rect.bottom < floor_rect.top:
-            self.gravity += 1
-            self.rect.y += self.gravity
-        if self.rect.bottom >= floor_rect.top:
-            self.gravity = 0
-            self.rect.bottom = floor_rect.top
-
-
-    def update(self):
-        keys = pygame.key.get_pressed()
-        if keys[controls["left"][self.portNum]] and not keys[controls["right"][self.portNum]] and  self.rect.left > 0:
-            self.image = self.images[0]
-            self.rect.x -= 8.5
-        if keys[controls["right"][self.portNum]] and self.rect.right < 1600 and not keys[controls["left"][self.portNum]]:
-            self.image = self.images[1]
-            self.rect.x += 8.5
-        if keys[controls["jump"][self.portNum]] and self.rect.bottom == floor_rect.top:
-            self.rect.y -= 250
-        self.apply_gravity()
-
-class FootGuy(pygame.sprite.Sprite):
-    def __init__(self, startX, portNum):
-        super(FootGuy,  self).__init__()
-        self.image_left = pygame.image.load("Assets/Characters/FootGuy/FootGuy.png")
+class Player(pygame.sprite.Sprite):
+    def __init__(self, startX, portNum, image_path):
+        super(Player, self).__init__()
+        self.image_left = pygame.image.load(image_path)
         self.image_right = pygame.transform.flip(self.image_left, True, False)
         self.images = [self.image_left, self.image_right]
         self.image = self.images[1]
@@ -57,16 +23,25 @@ class FootGuy(pygame.sprite.Sprite):
 
     def update(self):
         keys = pygame.key.get_pressed()
-        if keys[controls["left"][self.portNum]] and not keys[controls["right"][self.portNum]] and  self.rect.left > 0:
+        if keys[controls["left"][self.portNum]] and not keys[controls["right"][self.portNum]] and self.rect.left > 0:
             self.image = self.images[0]
-            self.rect.x -= 10
+            self.rect.x -= self.move_speed
         if keys[controls["right"][self.portNum]] and self.rect.right < 1600 and not keys[controls["left"][self.portNum]]:
             self.image = self.images[1]
-            self.rect.x += 10
+            self.rect.x += self.move_speed
         if keys[controls["jump"][self.portNum]] and self.rect.bottom == floor_rect.top:
             self.rect.y -= 250
         self.apply_gravity()
 
+class FistGuy(Player):
+    def __init__(self, startX, portNum):
+        super(FistGuy, self).__init__(startX, portNum, "Assets/Characters/FistGuy/FistGuy.png")
+        self.move_speed = 8.5
+
+class FootGuy(Player):
+    def __init__(self, startX, portNum):
+        super(FootGuy, self).__init__(startX, portNum, "Assets/Characters/FootGuy/FootGuy.png")
+        self.move_speed = 10
 
 class HealthBarLeft(pygame.sprite.Sprite):
     def __init__(self):
