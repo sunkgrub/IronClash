@@ -7,9 +7,6 @@
 
 ### Foot Guy
 ![Foot Guy](Assets/Characters/FootGuy/footGuy2.png)
-- Shoes
-- Shades
-- Navy Blue
 
 ### Sword Girl
 - Sword (Grey ig)
