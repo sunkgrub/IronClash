@@ -43,6 +43,11 @@ class FootGuy(Player):
         super(FootGuy, self).__init__(startX, portNum, "Assets/Characters/FootGuy/FootGuy.png")
         self.move_speed = 10
 
+class GunGuy(Player):
+    def __init__(self, startX, portNum):
+        super(GunGuy, self).__init__(startX, portNum, "Assets/Characters/GunGuy/GunGuy.png")
+        self.move_speed = 6
+
 class HealthBarLeft(pygame.sprite.Sprite):
     def __init__(self):
         super(HealthBarLeft, self).__init__()
