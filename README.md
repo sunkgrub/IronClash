@@ -4,8 +4,6 @@
 
 ### Fist Guy
 ![Fist Guy](Assets/Characters/FistGuy/FistGuy2.png)
-- Gloves
-- Reddish Brown
 
 ### Foot Guy
 ![Foot Guy](Assets/Characters/FootGuy/footGuy2.png)
