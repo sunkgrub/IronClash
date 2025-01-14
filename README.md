@@ -27,3 +27,5 @@
 
 ### Gun Guy
 ![Gun Guy](Assets/Characters/GunGuy/gunGuy.png)
+
+### Hook Guy
