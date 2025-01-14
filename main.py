@@ -12,7 +12,8 @@ class Player(pygame.sprite.Sprite):
         self.gravity = 0
         self.health = 500
         self.portNum = portNum
-    
+        self.FreedomofMovement = True
+
     def apply_gravity(self):
         if self.rect.bottom < floor_rect.top:
             self.gravity += 1
@@ -21,26 +22,58 @@ class Player(pygame.sprite.Sprite):
             self.gravity = 0
             self.rect.bottom = floor_rect.top
 
-    def update(self):
+    def check_attacks(self, screen):
         keys = pygame.key.get_pressed()
-        if keys[controls["left"][self.portNum]] and not keys[controls["right"][self.portNum]] and self.rect.left > 0:
+        if keys[controls["medium"][self.portNum]]:
+            self.perform_medium_attack(screen)
+
+    def perform_medium_attack(self, screen):
+        pass  # To be implemented by subclasses
+
+    def update(self, screen):
+        #Handle Movement
+        keys = pygame.key.get_pressed()
+        if keys[controls["left"][self.portNum]] and not keys[controls["right"][self.portNum]] and self.rect.left > 0 and self.FreedomofMovement:
             self.image = self.images[0]
             self.rect.x -= self.move_speed
-        if keys[controls["right"][self.portNum]] and self.rect.right < 1600 and not keys[controls["left"][self.portNum]]:
+        if keys[controls["right"][self.portNum]] and self.rect.right < 1600 and not keys[controls["left"][self.portNum]] and self.FreedomofMovement:
             self.image = self.images[1]
             self.rect.x += self.move_speed
-        if keys[controls["jump"][self.portNum]] and self.rect.bottom == floor_rect.top:
+        if keys[controls["jump"][self.portNum]] and self.rect.bottom == floor_rect.top and self.FreedomofMovement:
             self.rect.y -= 250
         self.apply_gravity()
+        self.check_attacks(screen)
+
+class MeleeAttack():
+    def __init__(self, startupTime, activeTime, recoveryTime, hitbox):
+        self.damage = 10
+        self.startupTime = startupTime
+        self.activeTime = activeTime
+        self.recoveryTime = recoveryTime    
+        self.hitbox = hitbox
+
+    def activate(self, screen):
+        self.beginTime = pygame.time.get_ticks()
+        if self.startupTime == (pygame.time.get_ticks() - self.beginTime) :
+            print("Startup")
+        elif self.activeTime == (pygame.time.get_ticks() - self.beginTime):
+            print("Active")
+        elif self.recoveryTime == (pygame.time.get_ticks() - self.beginTime):
+            print("Recovery")
+        
+                
+    
 
 class FistGuy(Player):
     def __init__(self, startX, portNum):
-        super(FistGuy, self).__init__(startX, portNum, "Assets/Characters/FistGuy/FistGuy.png")
+        super(FistGuy, self).__init__(startX, portNum, "Assets/Characters/FistGuy/FistGuy2.png")
         self.move_speed = 8.5
+        self.Swing = MeleeAttack(500,500,500,pygame.Rect(0,0,0,0))
+        
 
 class FootGuy(Player):
     def __init__(self, startX, portNum):
-        super(FootGuy, self).__init__(startX, portNum, "Assets/Characters/FootGuy/FootGuy.png")
+        super(FootGuy, self).__init__(startX, portNum, "Assets/Characters/FootGuy/footGuy2.png")
         self.move_speed = 10
 
 class GunGuy(Player):
@@ -103,10 +136,11 @@ clock = pygame.time.Clock()
 
 #Controls
 controls = {
-    "left": [pygame.K_a,pygame.K_j],
+    "left": [pygame.K_a, pygame.K_j],
     "right": [pygame.K_d, pygame.K_l],
     "jump": [pygame.K_w, pygame.K_i],
-    "block": [pygame.K_q, pygame.K_o]
+    "block": [pygame.K_q, pygame.K_o],
+    "medium": [pygame.K_x, pygame.K_COMMA]
 }
 
 # Create the FistGuy
@@ -126,15 +160,14 @@ while True:
     screen.fill((200, 200, 200))
     screen.blit(floor, floor_rect)
 
-
-
     #Draw HUD
     screen.blit(text_surf, text_rect)
 
     # Update the FistGuy
-    player.update()
+    player.update(screen)
     player.draw(screen)
-    player2.update()
+
+    player2.update(screen)
     player2.draw(screen)
 
     # Update the health bar
